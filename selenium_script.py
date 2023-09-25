@@ -37,14 +37,15 @@ driver = webdriver.Chrome(options = chrome_options)
 
 driver.get("https://cubexo-software.greythr.com/")
 
+time.sleep(10)
 username = driver.find_element(By.XPATH, "//input[@id='username']")
+time.sleep(10)
 password = driver.find_element(By.XPATH, "//input[@id='password']")
+time.sleep(10)
 login_button = driver.find_element(By.XPATH, "//button[text()=' Log in ']")
-time.sleep(10)
+
 username.send_keys("CSS016")
-time.sleep(10)
 password.send_keys("s@S7223889629")
-time.sleep(10)
 login_button.click()
 
 time.sleep(20)  # Wait for 20 seconds
