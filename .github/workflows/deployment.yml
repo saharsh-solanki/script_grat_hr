@@ -1,8 +1,8 @@
 name: Run Selenium Script
 
-on:
-  schedule:
-    - cron: '0 10,20 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
+# on:
+#   schedule:
+#     - cron: '0 10,20 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
 
 jobs:
   run-selenium-script:
