@@ -50,15 +50,18 @@ login_button.click()
 
 time.sleep(20)  # Wait for 20 seconds
 
-# Morning Scenario: Log In
-if time.localtime().tm_hour == 10:
-    sign_in_button = driver.find_element(By.XPATH,"//button[text()='Sign In']")
+# Get the current hour
+current_hour = int(time.strftime('%H'))
+# Morning Scenario: Log In (After 8 AM and before 6 PM)
+if 8 <= current_hour < 18:
+    sign_in_button = driver.find_element(By.XPATH, "//button[text()='Sign In']")
     sign_in_button.click()
 
-# Evening Scenario: Log Out
-elif time.localtime().tm_hour == 20:
-    sign_out_button = driver.find_element(By.XPATH,"//button[text()='Sign Out']")
+# Evening Scenario: Log Out (After 6 PM and before 8 AM)
+elif current_hour >= 18 or current_hour < 8:
+    sign_out_button = driver.find_element(By.XPATH, "//button[text()='Sign Out']")
     sign_out_button.click()
+
 
 # Close the WebDriver
 driver.quit()
