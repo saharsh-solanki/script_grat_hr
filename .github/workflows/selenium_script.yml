@@ -1,0 +1,24 @@
+name: Run Selenium Script
+
+on:
+  schedule:
+    - cron: '0 10,20 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
+
+jobs:
+  run-selenium-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'  # Use the appropriate Python version
+
+      - name: Install Dependencies
+        run: pip install selenium
+
+      - name: Run Selenium Script
+        run: python selenium_script.py
