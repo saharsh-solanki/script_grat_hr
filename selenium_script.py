@@ -34,7 +34,6 @@ for option in options:
 driver = webdriver.Chrome(options = chrome_options)
 
 driver.get("https://cubexo-software.greythr.com/")
-import pdb;pdb.set_trace()
 
 username = driver.find_element_by_xpath("//input[@id='username']")
 password = driver.find_element_by_xpath("//input[@id='password']")
