@@ -4,6 +4,10 @@ name: Run Selenium Script
 #   schedule:
 #     - cron: '0 10,20 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
 
+on:
+  push:
+    branches: [main]
+
 jobs:
   run-selenium-script:
     runs-on: ubuntu-latest
