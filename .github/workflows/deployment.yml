@@ -1,28 +1,57 @@
-name: Run Selenium Script
+# name: Run Selenium Script
+
+# # on:
+# #   schedule:
+# #     - cron: '0 10,20 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
 
 # on:
-#   schedule:
-#     - cron: '0 10,20 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
+#   push:
+#     branches: [main]
 
+# jobs:
+#   run-selenium-script:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.9'  # Use the appropriate Python version
+
+#       - name: Install Dependencies
+#         run: pip install selenium
+
+#       - name: Run Selenium Script
+#         run: python selenium_script.py
+
+
+
+name: Run Selenium On GitHub Action
 on:
-  push:
-    branches: [main]
-
+  workflow_dispatch:
 jobs:
-  run-selenium-script:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Checking out repo
+        uses: actions/checkout@v3
+      - name: Setting up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # Use the appropriate Python version
+          python-version: '3.9'
+      - name: Installing package list
+        run: apt list --installed    
+      - name: Removing previous chrome instances on runner 
+        run: sudo apt purge google-chrome-stable  
+        
+       # Need to fetch reqs if needed
+      - name: Installing all necessary packages
+        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
 
-      - name: Install Dependencies
-        run: pip install selenium
-
-      - name: Run Selenium Script
+      - name: Running the Python script
         run: python selenium_script.py

@@ -1,36 +1,37 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
-import platform
-import os 
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+import chromedriver_autoinstaller
+from pyvirtualdisplay import Display
+display = Display(visible=0, size=(800, 800))  
+display.start()
 
+chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+                                      # and if it doesn't exist, download it automatically,
+                                      # then add chromedriver to path
 
-print("Running script")
-# Configure the Selenium WebDriver with ChromeDriverManager
+chrome_options = webdriver.ChromeOptions()    
+# Add your options as needed    
+options = [
+  # Define window size here
+   "--window-size=1200,1200",
+    "--ignore-certificate-errors"
+ 
+    #"--headless",
+    #"--disable-gpu",
+    #"--window-size=1920,1200",
+    #"--ignore-certificate-errors",
+    #"--disable-extensions",
+    #"--no-sandbox",
+    #"--disable-dev-shm-usage",
+    #'--remote-debugging-port=9222'
+]
 
-# Get the operating system
-os_name = platform.system()
+for option in options:
+    chrome_options.add_argument(option)
 
-# Determine the appropriate platform string based on the system
-platform_string = None
-if os_name == "Windows":
-    platform_string = "win64"
-elif os_name == "Linux" and os_name == "Darwin":
-    platform_string = "linux64"
-else :
-    platform_string = "mac-x64"
-
-print("os_name",os_name)
-
-chrome_path = {
-    "win64":"chroms/window",
-     "mac-x64":"chroms/mac"
-}
-
-path_ex = os.getcwd() +"/"+chrome_path[platform_string]
-
-print("platform_string",path_ex)
-driver = webdriver.Chrome()
+    
+driver = webdriver.Chrome(options = chrome_options)
 
 driver.get("https://cubexo-software.greythr.com/")
 import pdb;pdb.set_trace()
