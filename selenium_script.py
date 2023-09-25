@@ -4,6 +4,7 @@ import time
 import platform
 import os 
 
+
 print("Running script")
 # Configure the Selenium WebDriver with ChromeDriverManager
 
