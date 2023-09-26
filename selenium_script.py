@@ -52,6 +52,7 @@ time.sleep(20)  # Wait for 20 seconds
 
 # Get the current hour
 current_hour = int(time.strftime('%H'))
+print("current_hour",current_hour)
 # Morning Scenario: Log In (After 8 AM and before 6 PM)
 if 8 <= current_hour < 18:
     sign_in_button = driver.find_element(By.XPATH, "//button[text()='Sign In']")
