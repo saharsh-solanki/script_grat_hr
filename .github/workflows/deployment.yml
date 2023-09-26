@@ -33,7 +33,7 @@
 name: Run Selenium On GitHub Action
 on:
   schedule:
-    - cron: '5 1 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
+    - cron: '0 10,14,20 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
   push:
     branches: [main]
 jobs:
