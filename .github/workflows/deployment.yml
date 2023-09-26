@@ -34,6 +34,8 @@ name: Run Selenium On GitHub Action
 on:
   schedule:
     - cron: '32 2 * * *'  # Schedule to run at 10 AM and 8 PM (UTC time)
+  push:
+    branches: [main]
 jobs:
   scrape:
     runs-on: ubuntu-latest
