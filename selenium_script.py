@@ -51,7 +51,7 @@ login_button.click()
 time.sleep(20)  # Wait for 20 seconds
 
 # Get the current hour
-current_hour = int(time.strftime('%H'))
+current_hour = int(time.strftime('%H'))+6
 print("current_hour",current_hour)
 # Morning Scenario: Log In (After 8 AM and before 6 PM)
 if 8 <= current_hour < 18:
