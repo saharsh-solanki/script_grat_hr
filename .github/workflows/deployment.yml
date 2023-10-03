@@ -36,4 +36,9 @@ jobs:
         env:
           LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
           LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
-        run: python selenium_script.py
+        run: |
+          python selenium_script.py
+          echo "Username: $LOGIN_USERNAME"
+          echo "password: $LOGIN_PASSWORD"
+          echo ${{ secrets.LOGIN_USERNAME }}
+          echo ${{ secrets.LOGIN_PASSWORD }}
