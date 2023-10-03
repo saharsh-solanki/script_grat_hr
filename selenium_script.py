@@ -8,6 +8,7 @@ display = Display(visible=0, size=(800, 800))
 display.start()
 import time
 import datetime
+import os 
 print("current time zone",datetime.datetime.now().astimezone().strftime("%Y-%m-%dT%H:%M:%S %Z"))
 
 chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
@@ -46,8 +47,8 @@ password = driver.find_element(By.XPATH, "//input[@id='password']")
 time.sleep(10)
 login_button = driver.find_element(By.XPATH, "//button[text()=' Log in ']")
 
-username.send_keys("CSS016")
-password.send_keys("s@S7223889629")
+username.send_keys(os.getenv("LOGIN_USERNAME"))
+password.send_keys("LOGIN_PASSWORD")
 login_button.click()
 
 time.sleep(20)  # Wait for 20 seconds
