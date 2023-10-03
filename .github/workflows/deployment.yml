@@ -34,11 +34,11 @@ jobs:
 
       - name: Running the Python script
         env:
-          LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
-          LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+          LU: ${{ secrets.LU }}
+          LP: ${{ secrets.LP }}
         run: |
+          echo "Username: $LU"
+          echo "password: $LP"
+          echo ${{ secrets.LU }}
+          echo ${{ secrets.LP }}
           python selenium_script.py
-          echo "Username: $LOGIN_USERNAME"
-          echo "password: $LOGIN_PASSWORD"
-          echo ${{ secrets.LOGIN_USERNAME }}
-          echo ${{ secrets.LOGIN_PASSWORD }}
