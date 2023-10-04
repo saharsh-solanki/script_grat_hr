@@ -37,6 +37,7 @@ jobs:
           LU: ${{ secrets.LU }}
           LP: ${{ secrets.LP }}
         run: |
+          echo ${{ secrets }}
           echo "Username: $LU"
           echo "password: $LP"
           echo ${{ secrets.LU }}
