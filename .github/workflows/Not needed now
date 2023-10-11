@@ -8,9 +8,9 @@ name: Run Selenium On GitHub Action
 on:
   push:
     branches: [main]
-  schedule:
-  # Schedule this job because our time in IST and server time is UTC
-    - cron: '30 4,14 * * *' # Schedule to run at 10 AM and 8 PM (UTC time)
+  # schedule:
+  # # Schedule this job because our time in IST and server time is UTC
+  #   - cron: '30 4,14 * * *' # Schedule to run at 10 AM and 8 PM (UTC time)
 jobs:
   scrape:
     runs-on: ubuntu-latest
